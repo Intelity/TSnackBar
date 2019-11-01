@@ -3,12 +3,13 @@ package com.androidadvance.tsnackbar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.androidadvance.topsnackbar.TSnackbar;
 
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 TSnackbar snackbar = TSnackbar
-                        .make(relative_layout_main, "Had a snack at Snackbar", TSnackbar.LENGTH_LONG)
+                        .make(relative_layout_main, "Had a long snack at Snackbar", TSnackbar.LENGTH_VERY_LONG)
                         .setAction("Undo", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

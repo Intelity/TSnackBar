@@ -31,6 +31,7 @@ class SnackbarManager {
 
     private static final int SHORT_DURATION_MS = 1500;
     private static final int LONG_DURATION_MS = 2750;
+    private static final int VERY_LONG_DURATION_MS = 5000;
 
     private static SnackbarManager sSnackbarManager;
 
@@ -87,7 +88,7 @@ class SnackbarManager {
             }
 
             if (mCurrentSnackbar != null && cancelSnackbarLocked(mCurrentSnackbar,
-                    TSnackbar.Callback.DISMISS_EVENT_CONSECUTIVE)) {
+                TSnackbar.Callback.DISMISS_EVENT_CONSECUTIVE)) {
                 // If we currently have a TSnackbar, try and cancel it and wait in line
                 return;
             } else {
@@ -220,8 +221,18 @@ class SnackbarManager {
         int durationMs = LONG_DURATION_MS;
         if (r.duration > 0) {
             durationMs = r.duration;
-        } else if (r.duration == TSnackbar.LENGTH_SHORT) {
-            durationMs = SHORT_DURATION_MS;
+        } else {
+            switch (r.duration) {
+                case TSnackbar.LENGTH_SHORT:
+                    durationMs = SHORT_DURATION_MS;
+                    break;
+                case TSnackbar.LENGTH_LONG:
+                    durationMs = LONG_DURATION_MS;
+                    break;
+                case TSnackbar.LENGTH_VERY_LONG:
+                    durationMs = VERY_LONG_DURATION_MS;
+                    break;
+            }
         }
         mHandler.removeCallbacksAndMessages(r);
         mHandler.sendMessageDelayed(Message.obtain(mHandler, MSG_TIMEOUT, r), durationMs);

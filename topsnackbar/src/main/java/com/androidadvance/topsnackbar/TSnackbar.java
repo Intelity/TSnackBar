@@ -79,16 +79,18 @@ public final class TSnackbar {
         }
     }
 
-    @IntDef({LENGTH_INDEFINITE, LENGTH_SHORT, LENGTH_LONG})
+    @IntDef({LENGTH_INDEFINITE, LENGTH_SHORT, LENGTH_LONG, LENGTH_VERY_LONG})
     @Retention(RetentionPolicy.SOURCE)
     public @interface Duration {
     }
 
-    public static final int LENGTH_INDEFINITE = -2;
+    public static final int LENGTH_INDEFINITE = -3;
 
-    public static final int LENGTH_SHORT = -1;
+    public static final int LENGTH_SHORT = -2;
 
-    public static final int LENGTH_LONG = 0;
+    public static final int LENGTH_LONG = -1;
+
+    public static final int LENGTH_VERY_LONG = 0;
 
     private static final int ANIMATION_DURATION = 250;
     private static final int ANIMATION_FADE_DURATION = 180;
